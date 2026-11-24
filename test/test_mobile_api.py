@@ -41,6 +41,14 @@ class TestMobileAPI(unittest.TestCase):
         r = self.client.post("/api/login", json={"username": "mstu", "password": "bad"})
         self.assertEqual(r.status_code, 401)
 
+    def test_login_response_hides_password_hash(self):
+        """登录响应不得回传 password_hash（Issue #7）。"""
+        self._register_login()
+        r = self.client.post("/api/login", json={"username": "mstu", "password": "123456"})
+        user = r.get_json()["data"]["user"]
+        self.assertNotIn("password_hash", user)
+        self.assertEqual(user["username"], "mstu")
+
     def test_register_login_devices(self):
         self._register_login()
         r = self.client.get("/api/devices", headers=self.h)

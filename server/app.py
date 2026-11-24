@@ -77,7 +77,14 @@ def create_app(db_path: str | None = None) -> Flask:
             return err(msg, 401)
         token = secrets.token_hex(16)
         _TOKENS[token] = user["uid"]
-        return ok({"token": token, "user": user})
+        # 仅回传客户端需要的字段，避免 password_hash 等敏感字段泄露（Issue #7）
+        safe_user = {
+            key: user[key]
+            for key in ("uid", "username", "real_name", "role", "status", "phone",
+                        "blacklist_count", "credit_score", "create_time")
+            if key in user
+        }
+        return ok({"token": token, "user": safe_user})
 
     @app.post("/api/register")
     def register():

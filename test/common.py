@@ -62,8 +62,9 @@ class BaseTestCase(unittest.TestCase):
         self.assertTrue(ok)
         aid = self.appt_ctrl.dao.query_one(
             "SELECT aid FROM appointment WHERE uid=? AND did=? "
-            "AND start_time=? AND end_time=?", (uid, did,
-                                               start.strftime("%Y-%m-%d %H:%M:%S"),
-                                               end.strftime("%Y-%m-%d %H:%M:%S")))["aid"]
+            "AND start_time=? AND end_time=?",
+            (uid, did,
+             start.strftime("%Y-%m-%d %H:%M:%S"),
+             end.strftime("%Y-%m-%d %H:%M:%S")))["aid"]
         self.appt_ctrl.audit(aid, 1, "", self.admin1)
         return aid

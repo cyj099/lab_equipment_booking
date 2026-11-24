@@ -11,8 +11,8 @@ class DeviceDAO(BaseDAO):
                spec: str = "", status: int = 1, remark: str = "",
                total_count: int = 1, qr_code: str = "") -> int:
         return self.execute(
-            "INSERT INTO device (dev_name, dev_no, category, lab_id, spec, status, remark, total_count, qr_code) "
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "INSERT INTO device (dev_name, dev_no, category, lab_id, spec, status, "
+            "remark, total_count, qr_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (dev_name, dev_no, category, lab_id, spec, status, remark, total_count, qr_code))
 
     def get_by_id(self, did: int) -> dict | None:

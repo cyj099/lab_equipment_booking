@@ -3,7 +3,7 @@
 
 from datetime import datetime, timedelta
 
-from PyQt6.QtCore import QDate, QTimer, Qt
+from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import (
     QCalendarWidget, QComboBox, QFormLayout, QHBoxLayout, QLabel, QLineEdit,
     QPushButton, QVBoxLayout, QWidget,
@@ -20,7 +20,7 @@ from controller.waitlist_controller import WaitlistController
 from model.credit_model import CreditLogDAO
 from utils import face_util
 from utils.constants import (
-    APPT_APPROVAL, APPT_WEEKLY, AUDIT_APPROVED, DEVICE_IDLE, DEVICE_IN_USE,
+    APPT_WEEKLY, AUDIT_APPROVED, DEVICE_IDLE, DEVICE_IN_USE,
     ROLE_TEACHER, SIGN_FACE, SIGN_MANUAL,
 )
 from view.base_window import BaseMainWindow
@@ -480,7 +480,8 @@ class StudentMainWindow(BaseMainWindow):
         return w
 
     def _refresh_waitlist(self) -> None:
-        fill_table(self.wait_table, waitlist_view(self.waitlist_ctrl.list_by_user(self.user["uid"])),
+        rows = self.waitlist_ctrl.list_by_user(self.user["uid"])
+        fill_table(self.wait_table, waitlist_view(rows),
                    ["wid", "dev_name", "start_time", "end_time", "status_name"])
 
     def _cancel_waitlist(self) -> None:

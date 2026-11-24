@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 """通用视图组件：表格工具函数与各类业务弹窗。"""
 
-from datetime import datetime, timedelta
-
 from PyQt6.QtCore import QDateTime, Qt
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import (
     QComboBox, QDateTimeEdit, QDialog, QDialogButtonBox, QFormLayout,
-    QHBoxLayout, QHeaderView, QLabel, QLineEdit, QListWidget, QMessageBox,
+    QHeaderView, QLabel, QLineEdit, QListWidget, QMessageBox,
     QPushButton, QSpinBox, QTableWidget, QTableWidgetItem, QTextEdit,
     QVBoxLayout, QWidget,
 )
@@ -18,7 +16,7 @@ from utils.constants import (
     AUDIT_STATUS_NAMES, DEVICE_STATUS_NAMES, REPAIR_STATUS_NAMES,
     WAIT_STATUS_NAMES,
 )
-from utils.time_util import parse_dt, to_db_str
+from utils.time_util import parse_dt
 
 
 def make_table(headers: list) -> QTableWidget:

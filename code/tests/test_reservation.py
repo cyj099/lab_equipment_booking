@@ -4,7 +4,6 @@
 import os
 import sys
 import unittest
-from datetime import date
 
 # 支持两种运行方式：`python -m unittest discover -s tests -t .` 与 IDE 直接运行本文件
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

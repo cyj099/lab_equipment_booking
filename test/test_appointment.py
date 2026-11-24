@@ -4,7 +4,7 @@
 from datetime import timedelta
 
 from test.common import BaseTestCase
-from utils.constants import (DEVICE_REPAIR, ROLE_LAB_ADMIN, USER_DISABLED)
+from utils.constants import (DEVICE_REPAIR, USER_DISABLED)
 
 
 class TestSubmitAppointment(BaseTestCase):

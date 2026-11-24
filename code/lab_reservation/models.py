@@ -48,7 +48,7 @@ class User:
     name: str
     sid: str                       # 学号 / 工号，作为登录账号
     role: Role
-    password_hash: str             # 密码哈希（演示用明文简化，实际应加盐哈希）
+    password_hash: str             # 密码哈希（核心模块用 SHA-256，正式系统用 bcrypt）
     phone: str = ""
     email: str = ""
     dept: str = ""

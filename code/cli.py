@@ -17,8 +17,8 @@ from datetime import date
 from typing import List, Optional
 
 from lab_reservation import (
-    Equipment, EquipmentService, EquipmentStatus, Lab, ReservationService,
-    ReservationStatus, Role, User, UserService,
+    Equipment, EquipmentService, EquipmentStatus, Lab, Reservation,
+    ReservationService, ReservationStatus, Role, User, UserService,
 )
 from lab_reservation.exceptions import ReservationError
 from lab_reservation.repositories import InMemoryRepository
@@ -146,7 +146,7 @@ class ReservationApp:
         print("\n" + "=" * 40)
         print("       实验室设备预约系统")
         print("=" * 40)
-        print("预置账号（密码见 README / cli.py 顶部注释）：")
+        print("预置账号：")
         print("  学生   2022001 / abc12345")
         print("  学生   2022002 / abc12345")
         print("  管理员 T0001   / admin123")

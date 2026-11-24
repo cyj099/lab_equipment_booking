@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """实验室管理员主窗口：设备管理、预约审核、报修、公告、候补、报表、签到、物联、统计。"""
 
-from datetime import datetime
-
 from PyQt6.QtCore import QDateTime, QTimer
 from PyQt6.QtWidgets import (
     QComboBox, QDateTimeEdit, QFileDialog, QHBoxLayout, QInputDialog, QLabel,

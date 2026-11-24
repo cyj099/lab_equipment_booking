@@ -7,8 +7,8 @@ from model.campus_model import CampusDAO
 from model.credit_model import CreditLogDAO
 from test.common import BaseTestCase
 from utils.constants import (
-    APPT_APPROVAL, APPT_WEEKLY, AUDIT_APPROVED, AUDIT_COMPLETED, AUDIT_NO_SHOW,
-    CREDIT_NO_SHOW_PENALTY, ROLE_TEACHER, STAGE_TUTOR, USER_DISABLED,
+    APPT_APPROVAL, APPT_WEEKLY, AUDIT_APPROVED, AUDIT_COMPLETED,
+    CREDIT_NO_SHOW_PENALTY, ROLE_TEACHER, USER_DISABLED,
 )
 
 

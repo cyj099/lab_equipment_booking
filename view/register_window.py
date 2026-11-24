@@ -2,7 +2,7 @@
 """注册窗口：学生自助注册。"""
 
 from PyQt6.QtWidgets import (
-    QFormLayout, QLineEdit, QMessageBox, QPushButton, QVBoxLayout, QWidget,
+    QFormLayout, QLineEdit, QPushButton, QVBoxLayout, QWidget,
 )
 
 from controller.user_controller import UserController

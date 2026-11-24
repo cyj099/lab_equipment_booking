@@ -37,5 +37,5 @@ class TestLab(BaseTestCase):
         dao = LabDAO(self.db_path)
         lid = dao.create("新实验室", "N700")
         self.assertGreater(lid, 0)
-        self.assertTrue(any(l["lab_name"] == "新实验室" for l in dao.list_all()))
+        self.assertTrue(any(lab["lab_name"] == "新实验室" for lab in dao.list_all()))
         self.assertEqual(dao.get_by_id(lid)["location"], "N700")

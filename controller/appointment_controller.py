@@ -227,7 +227,6 @@ class AppointmentController:
         new_count = (user["blacklist_count"] or 0) + 1
         self.user_dao.set_blacklist_count(r["uid"], new_count)
 
-        # 信用分扣减
         new_credit = max(0, (user["credit_score"] or 0) - CREDIT_NO_SHOW_PENALTY)
         self.user_dao.set_credit_score(r["uid"], new_credit)
         self.credit_dao.insert(r["uid"], -CREDIT_NO_SHOW_PENALTY, f"爽约扣分（预约单 {aid}）")

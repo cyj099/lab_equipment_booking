@@ -12,7 +12,7 @@ from datetime import date
 
 from lab_reservation import (
     Equipment, EquipmentService, EquipmentStatus, Lab, ReservationService,
-    ReservationStatus, Role, UserService,
+    Role, UserService,
 )
 from lab_reservation.exceptions import ConflictError
 from lab_reservation.repositories import InMemoryRepository

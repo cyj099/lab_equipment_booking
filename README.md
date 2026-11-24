@@ -1,8 +1,11 @@
 # 实验室设备预约系统
 
-高校实验室设备在线预约与管理的桌面应用。采用 **PyQt6 桌面 GUI + SQLite 本地数据库 + MVC 分层架构**，
-并附 **Flask + H5 移动端**，覆盖设备预约、多级审核、多校区管理、设备数量并发、AI 智能推荐、人脸签到、
-门禁/电源物联联动、信用分体系、二维码、统计图表等能力。
+软件工程课程设计的课程项目：一个高校实验室设备预约系统。桌面端用 PyQt6，移动端用 Flask + H5，
+数据存放在本地 SQLite 中，代码按 MVC 分层。
+
+项目围绕“预约”这条主线展开：学生查设备、提交预约，教师和管理员分级审核，到场签到后联动门禁与电源；
+此外还做了候补队列、信用分、统计图表等辅助功能。门禁和 IoT 数据是模拟的，人脸识别在缺少依赖时
+会自动回退到手动签到，不影响主流程。
 
 ## 技术栈
 
@@ -36,7 +39,7 @@ lab_equipment_booking/
 ├── view/                      # 视图层（登录/学生/管理员/超管/导师 + 组件 + QSS + 图表）
 ├── server/                    # Flask 移动端（app.py + templates/index.html）
 ├── utils/                     # 工具（加密/时间/校验/导出/备份/常量/AI/人脸/物联模拟）
-├── test/                      # 单元测试 + 集成测试（57 个用例）
+├── test/                      # 单元测试 + 集成测试（58 个用例）
 ├── code/                      # 实验六核心模块（lab_reservation + 39 个单元测试）
 └── hello.py                   # 实验一 Hello World 验证脚本
 ```
@@ -87,7 +90,7 @@ python server/app.py               # 启动移动端（手机访问 http://<本�
 
 ```bash
 cd lab_equipment_booking
-python -m unittest discover -s test -t . -v     # 57 个用例
+python -m unittest discover -s test -t . -v     # 58 个用例
 python -m coverage run --source=controller,model -m unittest discover -s test -t .
 python -m coverage report -m
 ```
@@ -100,10 +103,16 @@ python main.py                                  # 演示完整预约闭环
 python -m unittest discover -s tests -t . -v    # 39 个单元测试
 ```
 
+## 开发说明
+
+- 这是课程设计项目，代码优先保证分层清楚、业务规则可测试，没有按生产系统做并发和权限加固。
+- 核心模块在 `code/`，不依赖 PyQt，可以单独运行和测试，便于在实验六、实验八中复用。
+- 提交信息按 Conventional Commits 写，功能开发走 `feature/*` → `dev` → `main`。
+- 开发环境是 Windows 11 + Python 3.12，其他平台未做完整验证。
+
 ## 说明
 
 - 系统参数（预约最大时长、黑名单阈值、最低信用分）可在超管「系统参数」页实时修改。
-- 门禁/电源/IoT 指标为**模拟演示**数据（随签到/预约联动 + 定时刷新），非真实硬件。
 - 人脸识别依赖 `opencv-python` / `face-recognition`（dlib），Windows 上可能安装失败；
   代码已做 ImportError 降级，缺失时自动回退手动签到，不影响主流程。
 - 数据备份位于 `db/backup/` 目录。

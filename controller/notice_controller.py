@@ -19,7 +19,7 @@ class NoticeController:
         content = (content or "").strip()
         if not title or not content:
             return False, "公告标题和内容不能为空"
-        nid = self.dao.insert(title, content, publisher_uid)
+        self.dao.insert(title, content, publisher_uid)
         for u in self.user_dao.list_all():
             self.msg.send_message(u["uid"], "新公告", title)
         return True, "公告已发布"

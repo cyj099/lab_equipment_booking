@@ -14,7 +14,7 @@ class TestCampus(BaseTestCase):
 
     def test_lab_campus_join(self):
         labs = LabDAO(self.db_path).list_all()
-        self.assertTrue(all(l.get("campus_name") for l in labs))
+        self.assertTrue(all(lab.get("campus_name") for lab in labs))
 
     def test_device_campus_filter(self):
         devs = self.device_ctrl.list_devices(campus_id=1)

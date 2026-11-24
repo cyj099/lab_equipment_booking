@@ -8,7 +8,7 @@ from PyQt6.QtWidgets import (
 from controller.appointment_controller import AppointmentController
 from utils.constants import STAGE_TUTOR
 from view.base_window import BaseMainWindow
-from view.widgets import appointment_view, fill_table, info, make_table, warn
+from view.widgets import fill_table, info, make_table, warn
 
 
 class TeacherWindow(BaseMainWindow):
